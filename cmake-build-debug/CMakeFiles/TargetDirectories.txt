@@ -1,3 +1,0 @@
-D:/study/DESC-Hyeonjeong/cmake-build-debug/CMakeFiles/DESC_Hyeonjeong.dir
-D:/study/DESC-Hyeonjeong/cmake-build-debug/CMakeFiles/edit_cache.dir
-D:/study/DESC-Hyeonjeong/cmake-build-debug/CMakeFiles/rebuild_cache.dir
