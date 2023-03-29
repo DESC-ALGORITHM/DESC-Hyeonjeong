@@ -4,6 +4,7 @@
 #include <algorithm>
 using namespace std;
 bool isError = false;
+int isReverse; // 1이면 순방향, -1이면 역방향
 
 vector<string> splitString(string arr, int n){
     int ends = arr.find(']');
@@ -29,17 +30,30 @@ void printResult(vector<string> arr_v){
         return;
     }
     cout<<'[';
-    for(int i=0; i<arr_v.size(); i++){
-        if(i== arr_v.size()-1){
-            cout<< arr_v[i];
-            break;
+    if(isReverse ==1){
+        for(int i=0; i<arr_v.size(); i++){
+            if(i== arr_v.size()-1){
+                cout<< arr_v[i];
+                break;
+            }
+            cout<< arr_v[i]<<',';
         }
-        cout<< arr_v[i]<<',';
+    }else {
+        for(int i=arr_v.size()-1; i>=0; i--){
+            if(i== 0){
+                cout<< arr_v[i];
+                break;
+            }
+            cout<< arr_v[i]<<',';
+        }
     }
+
     cout<<']'<<'\n';
 }
 
 int main(){
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL); cout.tie(NULL);
     int t, n;
     cin >> t;
 
@@ -47,6 +61,7 @@ int main(){
         string str, arr;
         cin>>str>> n>>arr;
         vector<int> result;
+        isReverse = 1;
 
         vector<string> arr_v;
         if(arr.size()>2){
@@ -56,15 +71,22 @@ int main(){
 
         for(int i=0; i<str.length(); i++){
             if(str[i] == 'R'){
-                reverse(arr_v.begin(), arr_v.end());
+                isReverse*=-1;
             }
             if(str[i] == 'D'){
                 if(arr_v.size() <=0){
                     isError = true;
                     break;
                 }
-                arr_v.erase(arr_v.begin());
+
+                if(isReverse==1){
+                    arr_v.erase(arr_v.begin());
+                }else if(isReverse==-1){
+                    arr_v.erase(arr_v.end());
+                }
+
             }
+
         }
         printResult(arr_v);
     }
