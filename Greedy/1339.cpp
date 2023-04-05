@@ -2,6 +2,7 @@
 #include <string>
 #include <algorithm>
 #include <vector>
+#include <cmath>
 
 using namespace std;
 /*
@@ -40,8 +41,8 @@ int main() {
 
         int num = 1;
         for (int j = input.length()-1; j >= 0; j--) {
-            alpha[input[j]-'A'] += num;
-            num *= 10;
+            alpha[input[j]-'A'] += pow(10, num-1);
+            num++;
         }
     }
 
