@@ -1,37 +1,57 @@
 #include <iostream>
+#include <string>
+#include <algorithm>
 #include <vector>
 
 using namespace std;
 /*
- * 알파벳 몇개인지 알기 -> 이 개수만큼 (0~9) 중 내림차순으로 정해짐
+ * * 알파벳 몇개인지 알기 -> 이 개수만큼 (0~9) 중 내림차순으로 정해짐
  * 자릿수 큰 순서로 단어 내림차순 정렬하기
  * index 0인 행부터 차례대로 숫자 주기
+ *
+ * ABC
+ * BCA
+ * 이러한 경우 A, B 둘중 어떤걸 더 높은거 줘야할지 생각해야함 -> 이부분 처음에 생각못함
  */
-int cnt=0;
 
-void isExistedAlpha(string input, vector<bool> &alpha){
-    for(int i=0; i<input.size(); i++){
-        int index = int(input[i]) - 65;
+//내림차순
+bool cmp(int &a, int &b) {
+    return a > b;
+}
 
-        if(!alpha[index]){
-            alpha[index] = true;
-            cnt++;
+int wordNum(vector<int> &alpha){
+    int num = 9;
+    int result = 0;
+    for (int i = 0; i < 26;i++) {
+        if (alpha[i] == 0)
+            break;
+        result += alpha[i] * num--;
+    }
+    return result;
+}
+
+int main() {
+    ios::sync_with_stdio(false);
+    cin.tie(0); cout.tie(0);
+
+    int n;
+    cin >> n;
+
+    vector<int> alpha(27,0);
+    for (int i = 0; i < n; i++) {
+        string input;
+        cin >> input;
+
+        int num = 1;
+        for (int j = input.length()-1; j >= 0; j--) {
+            alpha[input[j]-'A'] += num;
+            num *= 10;
         }
     }
-}
-int main(){
-    int n;
-    cin>>n;
-    vector<string> words(n);
-    vector<bool> alpha(27, false);
 
-    for(int i=0; i<n; i++){
-        string input;
-        cin>> input;
-        words.push_back(input);
-        isExistedAlpha(input, alpha); // 알파벳 이미 나온거인지 여부에 따라 cnt 증가
-    }
-    alpha.assign(27, false);
+    sort(alpha.begin(), alpha.end(),cmp);
+
+    cout<<wordNum(alpha)<<'\n';
 
     return 0;
 }
