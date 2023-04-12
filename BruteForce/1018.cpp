@@ -6,7 +6,6 @@ using namespace std;
 
 // 시작에 따라 두가지 방식이 나올거고 더 적은걸로 선택하기
 int result= 1e3;
-
 void makeColor(vector<vector<int>> square, int start_i, int start_j){
 
     int cnt=0;
