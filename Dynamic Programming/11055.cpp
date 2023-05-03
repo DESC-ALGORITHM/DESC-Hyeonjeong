@@ -29,7 +29,6 @@ int main(){
     for(int i=0; i<n; i++){
         cin>> sequence[i];
     }
-
     cout<< maxSequence(n, sequence);
     return 0;
 }
