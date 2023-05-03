@@ -16,6 +16,7 @@ void backTracking(int index){
         return;
     }
 
+
     for(int i=1; i<=n; i++){
         nums[index] = i;
         backTracking(index+1);

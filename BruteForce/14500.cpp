@@ -33,6 +33,7 @@ void makeTetromino(int y, int x, int depth, int sum){
 
 }
 
+
 int main(){
     cin>>n>>m;
 
@@ -54,5 +55,6 @@ int main(){
     }
 
     cout<< result<<'\n';
+
     return 0;
 }

@@ -4,7 +4,6 @@
 using namespace std;
 
 int n, m;
-
 vector<int> num;
 void backTracking(int cnt, int start) {
     if (cnt == m) {
