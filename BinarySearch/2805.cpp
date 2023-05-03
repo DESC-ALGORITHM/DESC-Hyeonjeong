@@ -3,10 +3,12 @@
 #include <algorithm>
 
 using namespace std;
-// 적어도 M미터의 나무를 집에 가져가기 위해서 절단기에 설정할 수 있는 높이의 최댓값 -> 높이가 h일때 M미터 이하로 나무 가져갈 수 있는가?
 
+// Parametric Search
+// 적어도 M미터의 나무를 집에 가져가기 위해서 절단기에 설정할 수 있는 높이의 최댓값 -> 높이가 h일때 M미터 이하로 나무 가져갈 수 있는가?
 int maxHeight(long long n, long long m, vector<long long> &tree) {
-    // 중간값부터시작해서 m보다 크면 왼쪽, 아니면 오른쪽
+    // 중간값부터 시작해서 m보다 크면 오른쪽, 아니면 왼쪽
+    // 주의 : 높이 높아질수록 절단되는 값은 줄어든다는것!
     long long left = 0;
     long long right = tree[n-1];
     long long result = 0;
